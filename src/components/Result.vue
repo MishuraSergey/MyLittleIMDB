@@ -10,7 +10,7 @@
       <p class="result_field"><b>Plot:</b> {{movie.Plot}}</p>
       <p class="result_field"><b>Country:</b> {{movie.Country}}</p>
       <p class="result_field result_ratings">
-        <span class="result_ratings__rating" v-for="item in movie.Ratings"><b>{{ item.Source }}</b>:
+        <span class="result_ratings__rating" v-for="item in movie.Ratings" :key="item.Source"><b>{{ item.Source }}</b>:
           {{ item.Value }}</span>
       </p>
       <iframe class="result_trailer" :src="trailerId" allowfullscreen></iframe>
