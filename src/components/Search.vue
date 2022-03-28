@@ -21,15 +21,20 @@ export default {
     data: function () {
         return {
             userInput: '',
-            movies: []
+            movies: [],
+            timeout: null
         }
     },
     methods: {
-        async titleSearch() {
+        titleSearch() {
             this.movies = [];
-            const response = await fetch(`https://www.omdbapi.com/?apikey=5044463d&s=${this.userInput}`),
-                  movies = await response.json();
-            return movies.Response ? this.movies = movies.Search : false
+            //simple debounce function for less frequent api requests
+            clearTimeout(this.timeout);
+            this.timeout = setTimeout(async () => {
+                const response = await fetch(`https://www.omdbapi.com/?apikey=5044463d&s=${this.userInput}`),
+                    movies = await response.json();
+                return movies.Response ? this.movies = movies.Search : false
+            },500);
         },
         getMovieDetails(e) {
             this.userInput = e.target.innerText

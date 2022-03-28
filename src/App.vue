@@ -1,7 +1,7 @@
 <template>
     <main>
         <section v-if="isLoading">
-            <div class="lds-roller">
+            <div class="progress-roller">
                 <div></div>
                 <div></div>
                 <div></div>
@@ -43,7 +43,7 @@ export default {
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-.lds-roller {
+.progress-roller {
     display: block;
     margin: 0 auto;
     position: absolute;
@@ -54,7 +54,7 @@ export default {
     height: 80px;
 
     div {
-        animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        animation: progress-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
         transform-origin: 40px 40px;
 
         &:after {
@@ -142,7 +142,7 @@ export default {
     }
 }
 
-@keyframes lds-roller {
+@keyframes progress-roller {
     0% {
         transform: rotate(0deg);
     }
